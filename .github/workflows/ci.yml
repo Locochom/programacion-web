@@ -1,22 +1,17 @@
-name: Node.js CI con Jest
+name: Node.js CI
+
 on: [push]
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Clonar repositorio
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Usar Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Instalar dependencias
-        run: npm install
+      - run: npm install
 
-      - name: Dar permisos a jest (opcional)
-        run: chmod +x ./node_modules/.bin/jest
-
-      - name: Ejecutar pruebas
-        run: npm test
+      - run: npm test
